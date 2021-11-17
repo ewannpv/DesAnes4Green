@@ -8,7 +8,7 @@
   >
     <v-app-bar-nav-icon @click.stop="updateDrawer"></v-app-bar-nav-icon>
     <v-toolbar-title>
-      <h2>Atlas</h2>
+      <h2>DesAnesForGreen</h2>
     </v-toolbar-title>
     <v-spacer></v-spacer>
 

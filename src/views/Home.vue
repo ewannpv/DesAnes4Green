@@ -13,10 +13,10 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import CourseList from '@/components/courseList.vue';
-import LeftNavBar from '@/components/leftNavBar.vue';
-import FooterBar from '@/components/footerBar.vue';
-import topNavBar from '@/components/topNavBar.vue';
+import CourseList from '@/components/ItemList.vue';
+import LeftNavBar from '@/components/LeftNavBar.vue';
+import FooterBar from '@/components/FooterBar.vue';
+import topNavBar from '@/components/TopNavBar.vue';
 import store from '@/store';
 
 export default Vue.extend({

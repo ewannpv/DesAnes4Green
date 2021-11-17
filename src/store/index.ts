@@ -9,36 +9,36 @@ Vue.use(Vuex);
 const store: StoreOptions<VuexState> = {
   state: {
     items: [],
+    displayedItems: [],
     selectedItems: [],
     drawer: null,
   },
   getters: {
+    DISPLAYED_ITEMS: (state): Item[] => state.displayedItems,
+    SELECTED_ITEMS: (state): Item[] => state.selectedItems,
     ITEMS: (state): Item[] => state.items,
-    ADMIN_HOME_INDEX: (state): number => state.adminHomeIndex,
     DRAWER: (state): unknown => state.drawer,
   },
   mutations: {
-    SET_COURSES: (state, courses) => {
-      state.courses = courses;
+    SET_DISPLAYED_ITEMS: (state, items) => {
+      state.displayedItems = items;
     },
-    SET_SORTED_COURSES: (state, courses) => {
-      state.sortedCourses = courses;
+    SET_ITEMS: (state, items) => {
+      state.items = items;
     },
-    SET_ADMIN_HOME_INDEX: (state, index) => {
-      state.adminHomeIndex = index;
+    SET_SELECTED_ITEMS: (state, items) => {
+      state.selectedItems = items;
     },
     SET_DRAWER: (state, value) => {
       state.drawer = value;
     },
   },
   actions: {
-    FETCH_COURSES: (context): void => {
-      const courses = api.getAllCourses();
-      context.commit('SET_COURSES', courses);
-      context.commit('SET_SORTED_COURSES', courses);
-    },
-    UPDATE_ADMIN_HOME_INDEX: (context, index): void => {
-      context.commit('SET_ADMIN_HOME_INDEX', index);
+    FETCH_ITEMS: (context): void => {
+      const items = api.getAllItems();
+      context.commit('SET_DISPLAYED_ITEMS', items);
+      context.commit('SET_ITEMS', items);
+      context.commit('SET_DRAWER', items);
     },
     UPDATE_DRAWER: (context, value): void => {
       context.commit('SET_DRAWER', value);
