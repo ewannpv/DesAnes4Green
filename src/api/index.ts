@@ -1,5 +1,5 @@
 import { Item } from '@/interfaces/item';
-import data from './mock_items';
+import data from '@/assets/data/dataList';
 
 export function getAllItems(): Item[] {
   return data;
