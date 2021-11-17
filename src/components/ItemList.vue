@@ -32,7 +32,7 @@ export default {
   computed: {
     // List of items.
     items(): Item[] {
-      return store.getters.ITEMS;
+      return store.getters.DISPLAYED_ITEMS;
     },
   },
   methods: {
