@@ -9,7 +9,8 @@ Vue.use(Vuex);
 const store: StoreOptions<VuexState> = {
   state: {
     items: [],
-    displayedItems: [],
+    familySearchFilter: '',
+    tagSearchFilters: [],
     selectedItems: [],
     searchDrawer: null,
     cartDrawer: null,
@@ -19,7 +20,30 @@ const store: StoreOptions<VuexState> = {
   },
   getters: {
     DIALOG_ITEM: (state): unknown => state.dialogItem,
-    DISPLAYED_ITEMS: (state): Item[] => state.displayedItems.slice(0, state.maxDisplayedItems),
+    DISPLAYED_ITEMS: (state): Item[] => {
+      const items = state.items
+        .filter((item) => {
+          if (state.familySearchFilter.length && state.familySearchFilter !== item.Famille) {
+            return false;
+          }
+
+          let tagCheck = false;
+          if (!state.tagSearchFilters.length) {
+            tagCheck = true;
+          } else {
+            for (let index = 0; index < state.tagSearchFilters.length; index += 1) {
+              console.log(state.tagSearchFilters[index], item.Tags);
+              if (state.tagSearchFilters[index] === item.Tags[0]) {
+                tagCheck = true;
+                break;
+              }
+            }
+          }
+          return tagCheck;
+        })
+        .slice(0, state.maxDisplayedItems);
+      return items;
+    },
     SELECTED_ITEMS: (state): Item[] => state.selectedItems,
     CART_LEN: (state): number => state.selectedItems.length,
     ITEMS: (state): Item[] => state.items,
@@ -29,9 +53,6 @@ const store: StoreOptions<VuexState> = {
   mutations: {
     SET_DIALOG_ITEM: (state, item) => {
       state.dialogItem = item;
-    },
-    SET_DISPLAYED_ITEMS: (state, items) => {
-      state.displayedItems = items;
     },
     SET_ITEMS: (state, items) => {
       state.items = items;
@@ -53,11 +74,16 @@ const store: StoreOptions<VuexState> = {
         state.selectedItems.push(item);
       }
     },
+    SET_FAMILY_FILTER: (state, filtrer) => {
+      state.familySearchFilter = filtrer;
+    },
+    SET_TAG_FILTER: (state, filtrers) => {
+      state.familySearchFilter = filtrers;
+    },
   },
   actions: {
     FETCH_ITEMS: (context): void => {
       const items = api.getAllItems();
-      context.commit('SET_DISPLAYED_ITEMS', items);
       context.commit('SET_ITEMS', items);
     },
     ADD_ITEM_TO_CART: (context, item): void => {
@@ -74,6 +100,13 @@ const store: StoreOptions<VuexState> = {
     },
     DISPLAY_MORE_ITEM: (context): void => {
       context.commit('SET_MORE_ITEM');
+    },
+
+    UPDATE_FAMILY_SEARCH_FILTER: (context, filtrer): void => {
+      context.commit('SET_FAMILY_FILTER', filtrer);
+    },
+    UPDATE_TAG_SEARCH_FILTERS: (context, filtrers): void => {
+      context.commit('SET_TAG_FILTERS', filtrers);
     },
   },
   modules: {},

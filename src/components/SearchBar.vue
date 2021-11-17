@@ -9,16 +9,27 @@
       </v-col>
       <v-col cols="12">
         <h3>Famille</h3>
-        <v-chip-group column label="Semestre" multiple active-class="primary--text">
-          <v-chip filter outlined v-for="family in families" :key="family">
+        <v-chip-group column label="Family" active-class="primary--text" v-model="familyFilter">
+          <v-chip
+            outlined
+            v-for="family in families"
+            :key="family"
+            @input="updateFamilyFilter(family)"
+          >
             {{ family }}
           </v-chip>
         </v-chip-group>
       </v-col>
       <v-col cols="12">
         <h3>Tag</h3>
-        <v-chip-group column label="skills" multiple active-class="primary--text">
-          <v-chip filter outlined v-for="tag in tags" :key="tag">
+        <v-chip-group
+          column
+          v-model="tagFilters"
+          label="tags"
+          multiple
+          active-class="primary--text"
+        >
+          <v-chip outlined v-for="tag in tags" :key="tag">
             {{ tag }}
           </v-chip>
         </v-chip-group>
@@ -28,13 +39,35 @@
 </template>
 
 <script lang="ts">
+import store from '@/store';
+import { SearchBarData } from '@/interfaces/searchBarData';
+
 export default {
-  computed: {
-    families(): string[] {
-      return ['Fam 1', 'Fam 2'];
+  data(): SearchBarData {
+    return {
+      nameSearch: undefined,
+      familyFilter: -1,
+      tagFilters: [],
+      families: ['STRATEGIE', 'FRONTEND', 'BACKEND'],
+      tags: ['#USE', '#VALUE', '#METH'],
+    };
+  },
+  watch: {
+    familyFilter: 'updateFamilyFilter',
+    tagFiliters: 'updateTagFilters',
+  },
+  computed: {},
+  methods: {
+    updateFamilyFilter(): void {
+      store.dispatch(
+        'UPDATE_FAMILY_SEARCH_FILTER',
+        this.familyFilter ? this.families[this.familyFilter] : '',
+      );
     },
-    tags(): string[] {
-      return ['Tag 1', 'Tag 2'];
+    updateTagFilters(): void {
+      const filters: string[] = [];
+      this.tagFilters.forEach((e: number) => filters.push(this.tags[e]));
+      store.dispatch('UPDATE_TAG_SEARCH_FILTERS', filters);
     },
   },
 };
