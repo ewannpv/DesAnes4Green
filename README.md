@@ -1,4 +1,4 @@
-# des_anes_4_green
+# atlats-frontend
 
 ## Project setup
 ```
@@ -22,4 +22,3 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-# DesAnes4Green
