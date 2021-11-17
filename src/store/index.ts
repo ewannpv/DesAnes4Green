@@ -3,6 +3,7 @@ import Vuex, { StoreOptions } from 'vuex';
 import { VuexState } from '@/interfaces/vuexState';
 import * as api from '../api';
 import { Item } from '@/interfaces/item';
+import applyFilters from './filterItems';
 
 Vue.use(Vuex);
 
@@ -11,6 +12,7 @@ const store: StoreOptions<VuexState> = {
     items: [],
     familySearchFilter: '',
     tagSearchFilters: [],
+    identifiantFilter: '',
     selectedItems: [],
     searchDrawer: null,
     cartDrawer: null,
@@ -20,25 +22,7 @@ const store: StoreOptions<VuexState> = {
   },
   getters: {
     DIALOG_ITEM: (state): unknown => state.dialogItem,
-    DISPLAYED_ITEMS: (state): Item[] => {
-      const items = state.items.filter((item) => {
-        // Apply family filter.
-        if (state.familySearchFilter.length && state.familySearchFilter !== item.Famille) {
-          return false;
-        }
-
-        // Apply tag filter.
-        for (let index = 0; index < state.tagSearchFilters.length; index += 1) {
-          if (!item.Tags.includes(state.tagSearchFilters[index])) {
-            return false;
-          }
-        }
-
-        return true;
-      });
-      console.log(items.length);
-      return items.slice(0, state.maxDisplayedItems);
-    },
+    DISPLAYED_ITEMS: (state): Item[] => applyFilters(state),
     SELECTED_ITEMS: (state): Item[] => state.selectedItems,
     CART_LEN: (state): number => state.selectedItems.length,
     ITEMS: (state): Item[] => state.items,

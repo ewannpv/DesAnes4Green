@@ -4,7 +4,13 @@
       <v-col cols="12">
         <h3>Recherche</h3>
         <v-form ref="form" class="mt-4">
-          <v-text-field append-icon="mdi-magnify" v-model="nameSearch" label="Nom" dense outlined />
+          <v-text-field
+            append-icon="mdi-magnify"
+            v-model="nameSearch"
+            label="Identifiant"
+            dense
+            outlined
+          />
         </v-form>
       </v-col>
       <v-col cols="12">
@@ -45,7 +51,7 @@ import { SearchBarData } from '@/interfaces/searchBarData';
 export default {
   data(): SearchBarData {
     return {
-      nameSearch: undefined,
+      nameSearch: '',
       familyFilter: -1,
       tagFilters: [],
       families: ['STRATEGIE', 'FRONTEND', 'BACKEND'],

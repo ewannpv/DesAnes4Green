@@ -10,4 +10,5 @@ export interface VuexState {
   maxDisplayedItems: number;
   familySearchFilter: string;
   tagSearchFilters: string[];
+  identifiantFilter: string;
 }
