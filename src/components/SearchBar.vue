@@ -6,7 +6,7 @@
         <v-form ref="form" class="mt-4">
           <v-text-field
             append-icon="mdi-magnify"
-            v-model="nameSearch"
+            v-model="identifiantFilter"
             label="Identifiant"
             dense
             outlined
@@ -51,7 +51,7 @@ import { SearchBarData } from '@/interfaces/searchBarData';
 export default {
   data(): SearchBarData {
     return {
-      nameSearch: '',
+      identifiantFilter: '',
       familyFilter: -1,
       tagFilters: [],
       families: ['STRATEGIE', 'FRONTEND', 'BACKEND'],
@@ -61,6 +61,7 @@ export default {
   watch: {
     familyFilter: 'updateFamilyFilter',
     tagFilters: 'updateTagFilters',
+    identifiantFilter: 'updateIdentifiantFilter',
   },
   computed: {},
   methods: {
@@ -74,6 +75,9 @@ export default {
       const filters: string[] = [];
       this.tagFilters.forEach((e: number) => filters.push(this.tags[e]));
       store.dispatch('UPDATE_TAG_SEARCH_FILTERS', filters);
+    },
+    updateIdentifiantFilter(): void {
+      store.dispatch('UPDATE_ID_SEARCH_FILTER', this.identifiantFilter);
     },
   },
 };

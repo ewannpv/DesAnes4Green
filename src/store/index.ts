@@ -53,11 +53,14 @@ const store: StoreOptions<VuexState> = {
         state.selectedItems.push(item);
       }
     },
-    SET_FAMILY_FILTER: (state, filtrer) => {
-      state.familySearchFilter = filtrer;
+    SET_FAMILY_FILTER: (state, filter) => {
+      state.familySearchFilter = filter;
     },
-    SET_TAG_FILTERS: (state, filtrers) => {
-      state.tagSearchFilters = filtrers;
+    SET_TAG_FILTERS: (state, filters) => {
+      state.tagSearchFilters = filters;
+    },
+    SET_ID_FILTER: (state, filter) => {
+      state.identifiantFilter = filter;
     },
   },
   actions: {
@@ -81,11 +84,14 @@ const store: StoreOptions<VuexState> = {
       context.commit('SET_MORE_ITEM');
     },
 
-    UPDATE_FAMILY_SEARCH_FILTER: (context, filtrer): void => {
-      context.commit('SET_FAMILY_FILTER', filtrer);
+    UPDATE_FAMILY_SEARCH_FILTER: (context, filter): void => {
+      context.commit('SET_FAMILY_FILTER', filter);
     },
-    UPDATE_TAG_SEARCH_FILTERS: (context, filtrers): void => {
-      context.commit('SET_TAG_FILTERS', filtrers);
+    UPDATE_TAG_SEARCH_FILTERS: (context, filters): void => {
+      context.commit('SET_TAG_FILTERS', filters);
+    },
+    UPDATE_ID_SEARCH_FILTER: (context, filter): void => {
+      context.commit('SET_ID_FILTER', filter);
     },
   },
   modules: {},

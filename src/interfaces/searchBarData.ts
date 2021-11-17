@@ -1,5 +1,5 @@
 export interface SearchBarData {
-  nameSearch: '';
+  identifiantFilter: '';
   familyFilter: number;
   tagFilters: never[];
   families: string[];
