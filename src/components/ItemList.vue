@@ -1,5 +1,6 @@
 <template>
   <v-row>
+    <dialog-item />
     <v-col v-for="item in items" :key="item.name" class="mb-2 mt-2" cols="12" sm="6">
       <v-card>
         <v-card-title primary-title> {{ item.ID }} - {{ item.Recommandation }} </v-card-title>
@@ -36,8 +37,12 @@
 import store from '@/store';
 import { getTags, Item } from '@/interfaces/item';
 import { Tag } from '@/interfaces/tag';
+import DialogItem from '@/components/DialogItem.vue';
 
 export default {
+  components: {
+    DialogItem,
+  },
   data(): unknown {
     return {
       dialogShowed: false,
@@ -57,7 +62,7 @@ export default {
       return getTags(item);
     },
     displayItem(item: Item): void {
-      store.dispatch('SET_DIALOG_ITEM', item);
+      store.dispatch('UPDATE_DIALOG_ITEM', item);
     },
     AddToCart(item: Item): void {
       store.dispatch('ADD_ITEM_TO_CART', item);
