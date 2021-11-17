@@ -14,14 +14,16 @@
 
     <v-menu bottom left>
       <template v-slot:activator="{ on, attrs }">
-        <v-btn icon v-bind="attrs" v-on="on">
-          <v-icon>mdi-dots-vertical</v-icon>
+        <v-btn icon v-bind="attrs" v-on="on" class="mr-1">
+          <v-badge color="green darken-4" :content="cartLen">
+            <v-icon>mdi-cart-outline</v-icon>
+          </v-badge>
         </v-btn>
       </template>
 
       <v-list>
-        <v-list-item v-for="(item, i) in items" :key="i" @click="updateSelectedItem(item.id)">
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        <v-list-item v-for="(item, i) in items" :key="i">
+          <v-list-item-title>{{ item.name }}</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -29,36 +31,21 @@
 </template>
 
 <script lang="ts">
-import TopNavBarEnum from '@/models/topNavBarEnum';
-import router from '@/router';
 import store from '@/store';
+import { Item } from '@/interfaces/item';
 
 export default {
   computed: {
-    items(): {
-      title: string;
-      id: number;
-    }[] {
-      return [
-        { title: 'Acceuil', id: TopNavBarEnum.HOME },
-
-        { title: 'Panel Admin', id: TopNavBarEnum.ADMIN_PANEL },
-        { title: 'Se Deconnecter', id: TopNavBarEnum.LOGOUT },
-      ];
+    items(): Item[] {
+      return store.getters.SELECTED_ITEMS;
+    },
+    cartLen(): number {
+      return this.items.length;
     },
   },
   methods: {
     updateDrawer(): void {
       store.dispatch('UPDATE_DRAWER', !store.getters.DRAWER);
-    },
-    updateSelectedItem(id: number): void {
-      if (id === TopNavBarEnum.HOME) {
-        router.push({ path: '/' });
-      } else if (id === TopNavBarEnum.ADMIN_PANEL) {
-        router.push({ path: 'admin' });
-      } else if (id === TopNavBarEnum.LOGOUT) {
-        router.push({ path: 'login' });
-      }
     },
   },
 };

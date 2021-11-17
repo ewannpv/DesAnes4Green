@@ -37,8 +37,8 @@ const store: StoreOptions<VuexState> = {
     FETCH_ITEMS: (context): void => {
       const items = api.getAllItems();
       context.commit('SET_DISPLAYED_ITEMS', items);
+      context.commit('SET_SELECTED_ITEMS', items);
       context.commit('SET_ITEMS', items);
-      context.commit('SET_DRAWER', items);
     },
     UPDATE_DRAWER: (context, value): void => {
       context.commit('SET_DRAWER', value);
