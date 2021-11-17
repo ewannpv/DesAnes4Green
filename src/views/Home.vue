@@ -5,7 +5,7 @@
     </v-navigation-drawer>
     <top-nav-bar />
     <v-container align-start fill-height fluid grid-list-xs class="grey lighten-4">
-      <course-list />
+      <item-list />
     </v-container>
     <footer-bar />
   </v-app>
@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import CourseList from '@/components/ItemList.vue';
+import ItemList from '@/components/ItemList.vue';
 import LeftNavBar from '@/components/LeftNavBar.vue';
 import FooterBar from '@/components/FooterBar.vue';
 import topNavBar from '@/components/TopNavBar.vue';
@@ -23,7 +23,7 @@ export default Vue.extend({
   name: 'Home',
 
   components: {
-    CourseList,
+    ItemList,
     LeftNavBar,
     FooterBar,
     topNavBar,

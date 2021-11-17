@@ -4,13 +4,7 @@
       <v-col cols="12">
         <h3>Recherche</h3>
         <v-form ref="form" class="mt-4">
-          <v-text-field
-            append-icon="mdi-magnify"
-            v-model="nameSearch"
-            label="Cours"
-            dense
-            outlined
-          />
+          <v-text-field append-icon="mdi-magnify" v-model="nameSearch" label="Nom" dense outlined />
         </v-form>
       </v-col>
       <v-col cols="12">
