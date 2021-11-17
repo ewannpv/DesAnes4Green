@@ -7,4 +7,5 @@ export interface VuexState {
   searchDrawer: unknown;
   cartDrawer: unknown;
   cartlen: number;
+  dialogItem: unknown;
 }
