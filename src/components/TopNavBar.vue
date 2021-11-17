@@ -14,24 +14,19 @@
 
     <v-menu bottom left>
       <template v-slot:activator="{ on, attrs }">
-        <v-btn icon v-bind="attrs" v-on="on" class="mr-1">
+        <v-btn icon v-bind="attrs" v-on="on" class="mr-1" @click="openCart()">
           <v-badge color="green darken-4" :content="cartLen">
             <v-icon>mdi-cart-outline</v-icon>
           </v-badge>
         </v-btn>
       </template>
-
-      <v-list>
-        <v-list-item v-for="(item, i) in items" :key="i">
-          <v-list-item-title>{{ item.name }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
     </v-menu>
   </v-app-bar>
 </template>
 
 <script lang="ts">
 import store from '@/store';
+import router from '@/router';
 import { Item } from '@/interfaces/item';
 
 export default {
@@ -40,12 +35,15 @@ export default {
       return store.getters.SELECTED_ITEMS;
     },
     cartLen(): number {
-      return this.items.length;
+      return store.getters.CART_LEN;
     },
   },
   methods: {
     updateDrawer(): void {
       store.dispatch('UPDATE_DRAWER', !store.getters.DRAWER);
+    },
+    openCart(): void {
+      router.push({ path: '/cart' });
     },
   },
 };

@@ -27,7 +27,7 @@ export default {
       return store.getters.SELECTED_ITEMS;
     },
     count(): string {
-      return this.items.length ? ` (${this.items.length})` : ' (vide)';
+      return store.getters.CART_LEN ? ` (${this.items.length})` : ' (vide)';
     },
   },
 };

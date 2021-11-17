@@ -5,4 +5,5 @@ export interface VuexState {
   displayedItems: Item[];
   selectedItems: Item[];
   drawer: unknown;
+  cartlen: number;
 }
