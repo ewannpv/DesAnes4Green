@@ -21,28 +21,23 @@ const store: StoreOptions<VuexState> = {
   getters: {
     DIALOG_ITEM: (state): unknown => state.dialogItem,
     DISPLAYED_ITEMS: (state): Item[] => {
-      const items = state.items
-        .filter((item) => {
-          if (state.familySearchFilter.length && state.familySearchFilter !== item.Famille) {
+      const items = state.items.filter((item) => {
+        // Apply family filter.
+        if (state.familySearchFilter.length && state.familySearchFilter !== item.Famille) {
+          return false;
+        }
+
+        // Apply tag filter.
+        for (let index = 0; index < state.tagSearchFilters.length; index += 1) {
+          if (!item.Tags.includes(state.tagSearchFilters[index])) {
             return false;
           }
+        }
 
-          let tagCheck = false;
-          if (!state.tagSearchFilters.length) {
-            tagCheck = true;
-          } else {
-            for (let index = 0; index < state.tagSearchFilters.length; index += 1) {
-              console.log(state.tagSearchFilters[index], item.Tags);
-              if (state.tagSearchFilters[index] === item.Tags[0]) {
-                tagCheck = true;
-                break;
-              }
-            }
-          }
-          return tagCheck;
-        })
-        .slice(0, state.maxDisplayedItems);
-      return items;
+        return true;
+      });
+      console.log(items.length);
+      return items.slice(0, state.maxDisplayedItems);
     },
     SELECTED_ITEMS: (state): Item[] => state.selectedItems,
     CART_LEN: (state): number => state.selectedItems.length,
@@ -77,8 +72,8 @@ const store: StoreOptions<VuexState> = {
     SET_FAMILY_FILTER: (state, filtrer) => {
       state.familySearchFilter = filtrer;
     },
-    SET_TAG_FILTER: (state, filtrers) => {
-      state.familySearchFilter = filtrers;
+    SET_TAG_FILTERS: (state, filtrers) => {
+      state.tagSearchFilters = filtrers;
     },
   },
   actions: {

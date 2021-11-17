@@ -54,14 +54,14 @@ export default {
   },
   watch: {
     familyFilter: 'updateFamilyFilter',
-    tagFiliters: 'updateTagFilters',
+    tagFilters: 'updateTagFilters',
   },
   computed: {},
   methods: {
     updateFamilyFilter(): void {
       store.dispatch(
         'UPDATE_FAMILY_SEARCH_FILTER',
-        this.familyFilter ? this.families[this.familyFilter] : '',
+        this.familyFilter !== undefined ? this.families[this.familyFilter] : '',
       );
     },
     updateTagFilters(): void {
