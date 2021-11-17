@@ -12,8 +12,8 @@
             <v-divider></v-divider>
             <v-chip-group active-class="primary--text" column>
               <v-chip
-                v-for="tag in getTags(item)"
-                :key="tag.name"
+                v-for="(tag, index) in getTags(item)"
+                :key="tagKey(item.ID, tag.name, index)"
                 v-bind:color="tag.color"
                 text-color="white"
                 label
@@ -79,6 +79,9 @@ export default {
     },
     loadMoreItem(): void {
       store.dispatch('DISPLAY_MORE_ITEM');
+    },
+    tagKey(item: string, tag: string, index: string): string {
+      return `${item}_${tag}_${index}`;
     },
   },
 };
