@@ -4,6 +4,7 @@ export interface VuexState {
   items: Item[];
   displayedItems: Item[];
   selectedItems: Item[];
-  drawer: unknown;
+  searchDrawer: unknown;
+  cartDrawer: unknown;
   cartlen: number;
 }

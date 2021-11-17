@@ -1,18 +1,16 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer :value="drawer" @input="updateDrawer($event)" app clipped>
-      <left-nav-bar />
+    <v-navigation-drawer :value="searchDrawer" @input="updateSearchDrawer($event)" app clipped>
+      <search-bar />
+    </v-navigation-drawer>
+    <v-navigation-drawer :value="cartDrawer" @input="updateCardhDrawer($event)" app clipped right>
+      <cart-bar />
     </v-navigation-drawer>
     <top-nav-bar />
     <v-container align-start fill-height fluid grid-list-xs class="grey lighten-4 main_container">
-      <v-row>
-        <v-col cols="12" sm="9"> <item-list /> </v-col>
-
-        <v-col cols="12" sm="3" class="divider">
-          <cart-list />
-        </v-col>
-      </v-row>
+      <item-list />
     </v-container>
+
     <footer-bar />
   </v-app>
 </template>
@@ -20,9 +18,9 @@
 <script lang="ts">
 import Vue from 'vue';
 import ItemList from '@/components/ItemList.vue';
-import CartList from '@/components/CartList.vue';
+import CartBar from '@/components/CartBar.vue';
 
-import LeftNavBar from '@/components/LeftNavBar.vue';
+import SearchBar from '@/components/SearchBar.vue';
 import FooterBar from '@/components/FooterBar.vue';
 import topNavBar from '@/components/TopNavBar.vue';
 import store from '@/store';
@@ -32,19 +30,25 @@ export default Vue.extend({
 
   components: {
     ItemList,
-    CartList,
-    LeftNavBar,
+    CartBar,
+    SearchBar,
     FooterBar,
     topNavBar,
   },
   computed: {
-    drawer(): unknown {
-      return store.getters.DRAWER;
+    searchDrawer(): unknown {
+      return store.getters.SEARCH_DRAWER;
+    },
+    cartDrawer(): unknown {
+      return store.getters.CART_DRAWER;
     },
   },
   methods: {
-    updateDrawer(value: boolean): void {
-      store.dispatch('UPDATE_DRAWER', value);
+    updateSearchDrawer(value: boolean): void {
+      store.dispatch('UPDATE_SEARCH_DRAWER', value);
+    },
+    updateCardhDrawer(value: boolean): void {
+      store.dispatch('UPDATE_CART_DRAWER', value);
     },
   },
 });

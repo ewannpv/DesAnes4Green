@@ -13,6 +13,12 @@ const data = [
     shortDescription: 'blabla',
     longDescription: 'blabla',
   } as Item,
+  {
+    name: 'Item 3',
+    code: '0001',
+    shortDescription: 'blabla',
+    longDescription: 'blabla',
+  } as Item,
 ];
 
 export default data;

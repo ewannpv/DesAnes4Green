@@ -11,7 +11,8 @@ const store: StoreOptions<VuexState> = {
     items: [],
     displayedItems: [],
     selectedItems: [],
-    drawer: null,
+    searchDrawer: null,
+    cartDrawer: null,
     cartlen: 0,
   },
   getters: {
@@ -19,7 +20,8 @@ const store: StoreOptions<VuexState> = {
     SELECTED_ITEMS: (state): Item[] => state.selectedItems,
     CART_LEN: (state): number => state.cartlen,
     ITEMS: (state): Item[] => state.items,
-    DRAWER: (state): unknown => state.drawer,
+    SEARCH_DRAWER: (state): unknown => state.searchDrawer,
+    CART_DRAWER: (state): unknown => state.cartDrawer,
   },
   mutations: {
     SET_DISPLAYED_ITEMS: (state, items) => {
@@ -32,8 +34,11 @@ const store: StoreOptions<VuexState> = {
       state.selectedItems = items;
       state.cartlen = state.selectedItems.length;
     },
-    SET_DRAWER: (state, value) => {
-      state.drawer = value;
+    SET_SEARCH_DRAWER: (state, value) => {
+      state.searchDrawer = value;
+    },
+    SET_CART_DRAWER: (state, value) => {
+      state.cartDrawer = value;
     },
     SET_NEW_SELECTED_ITEM: (state, item) => {
       state.selectedItems.concat(item);
@@ -53,8 +58,11 @@ const store: StoreOptions<VuexState> = {
     UPDATE_SELECTED_ITEMS: (context, items): void => {
       context.commit('SET_NEW_SELECTED_ITEM', items);
     },
-    UPDATE_DRAWER: (context, value): void => {
-      context.commit('SET_DRAWER', value);
+    UPDATE_SEARCH_DRAWER: (context, value): void => {
+      context.commit('SET_SEARCH_DRAWER', value);
+    },
+    UPDATE_CART_DRAWER: (context, value): void => {
+      context.commit('SET_CART_DRAWER', value);
     },
   },
   modules: {},
