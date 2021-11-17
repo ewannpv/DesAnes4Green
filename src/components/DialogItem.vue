@@ -8,7 +8,7 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn text color="green darken-2" @click="closeDialog()">Fermer</v-btn>
-        <v-btn text color="light-blue darken-3" @click="AddToCart()">Ajouter au panier</v-btn>
+        <v-btn text color="light-blue darken-3" @click="addToCart()">Ajouter au panier</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -28,7 +28,7 @@ export default {
     closeDialog(): void {
       store.dispatch('UPDATE_DIALOG_ITEM', null);
     },
-    AddToCart(): void {
+    addToCart(): void {
       store.dispatch('ADD_ITEM_TO_CART', store.getters.DIALOG_ITEM);
       this.closeDialog();
     },

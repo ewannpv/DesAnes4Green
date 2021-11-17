@@ -56,6 +56,6 @@ export default Vue.extend({
 
 <style scoped>
 .main_container {
-  margin-bottom: 32px;
+  margin-bottom: 64px;
 }
 </style>

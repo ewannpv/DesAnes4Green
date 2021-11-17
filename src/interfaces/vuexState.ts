@@ -8,4 +8,5 @@ export interface VuexState {
   cartDrawer: unknown;
   cartlen: number;
   dialogItem: unknown;
+  maxDisplayedItems: number;
 }

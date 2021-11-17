@@ -15,10 +15,11 @@ const store: StoreOptions<VuexState> = {
     cartDrawer: null,
     cartlen: 0,
     dialogItem: null,
+    maxDisplayedItems: 20,
   },
   getters: {
     DIALOG_ITEM: (state): unknown => state.dialogItem,
-    DISPLAYED_ITEMS: (state): Item[] => state.displayedItems,
+    DISPLAYED_ITEMS: (state): Item[] => state.displayedItems.slice(0, state.maxDisplayedItems),
     SELECTED_ITEMS: (state): Item[] => state.selectedItems,
     CART_LEN: (state): number => state.selectedItems.length,
     ITEMS: (state): Item[] => state.items,
@@ -44,6 +45,9 @@ const store: StoreOptions<VuexState> = {
     SET_CART_DRAWER: (state, value) => {
       state.cartDrawer = value;
     },
+    SET_MORE_ITEM: (state) => {
+      state.maxDisplayedItems += 20;
+    },
     SET_ITEM_TO_CART: (state, item) => {
       if (!state.selectedItems.includes(item)) {
         state.selectedItems.push(item);
@@ -67,6 +71,9 @@ const store: StoreOptions<VuexState> = {
     },
     UPDATE_DIALOG_ITEM: (context, item): void => {
       context.commit('SET_DIALOG_ITEM', item);
+    },
+    DISPLAY_MORE_ITEM: (context): void => {
+      context.commit('SET_MORE_ITEM');
     },
   },
   modules: {},
