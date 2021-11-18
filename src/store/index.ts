@@ -13,6 +13,7 @@ const store: StoreOptions<VuexState> = {
     familySearchFilter: '',
     tagSearchFilters: [],
     identifiantFilter: '',
+    necessaryItems: [],
     selectedItems: [],
     searchDrawer: null,
     cartDrawer: null,
@@ -35,6 +36,9 @@ const store: StoreOptions<VuexState> = {
     },
     SET_ITEMS: (state, items) => {
       state.items = items;
+    },
+    SET_NECESSARY_ITEMS: (state, items) => {
+      state.necessaryItems = items;
     },
     SET_SELECTED_ITEMS: (state, items) => {
       state.selectedItems = items;
@@ -66,7 +70,10 @@ const store: StoreOptions<VuexState> = {
   actions: {
     FETCH_ITEMS: (context): void => {
       const items = api.getAllItems();
+      const necessaryItems = items.map((item: Item) => item.Incontournable === true);
+
       context.commit('SET_ITEMS', items);
+      context.commit('SET_NECESSARY_ITEMS', necessaryItems);
     },
     ADD_ITEM_TO_CART: (context, item): void => {
       context.commit('SET_ITEM_TO_CART', item);
