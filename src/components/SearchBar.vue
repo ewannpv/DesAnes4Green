@@ -56,7 +56,7 @@ export default Vue.extend({
       identifiantFilter: '',
       familyFilter: -1,
       tagFilters: [],
-      families: ['STRATEGIE', 'FRONTEND', 'BACKEND'],
+      families: api.getFamilyNames(),
       tags: api.getAllItemTags(),
     };
   },

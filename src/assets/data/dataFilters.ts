@@ -16,6 +16,16 @@ export const ItemTags = [
   '#SEC',
 ];
 
+export const FamilyHisto = [
+  ['STRATEGIE', 62],
+  ['SPECIFICATIONS', 62],
+  ['UX/UI', 74],
+  ['CONTENUS', 53],
+  ['ARCHITECTURE', 72],
+  ['FRONTEND', 84],
+  ['BACKEND', 78],
+  ['HEBERGEMENT', 69],
+];
 export const Actors = [
   'ProjectMngr',
   'Manager',
