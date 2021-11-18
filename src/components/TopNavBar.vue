@@ -29,8 +29,8 @@ export default {
     items(): Item[] {
       return store.getters.SELECTED_ITEMS;
     },
-    cartLen(): number {
-      return this.items.length;
+    cartLen(): string {
+      return this.items.length.toString();
     },
   },
   methods: {
