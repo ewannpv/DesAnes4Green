@@ -9,7 +9,7 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known_hosts: github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
+          known_hosts: 141.94.250.104 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7hLrS7zaaZFAJWfKPmeNDPmmHfOQqx28LDZlGheV2afTEncftFyKVd/FccutsOSSd8gt8Bb40zJjzhgiKw8z5qyjnlGE0OC/B3+7Rq5Tsg/Ao8AgDOPJ9dsmV0BluH+3bEnxTXBEDxKDfxOeGfl6HI4kD4sECw9BPe5mgOvWcMbiTuJwa0muAf0b5D3UsbpvRtCI7lp83lZuOJfU717hPmH/71Igo4frXb3iWnj0+GiJXvx4wcu6g1GACPsDbSmPHpJeTXrdoNSIi4HTZatg/nEzTwu7mx0kC2h39lZqko2FP8bsJP2aqDSnRXn0dmwmWccjU57GDo/d3CoG8NYY0WieZqyLjC2mjq5TmkPMJHFzCSoGQObiN9qyIGNmtm/n81qMHmLpxuL9eTKJfeMgEFEIZnb28kwjNf3W5VHrchQXKFumAKPrHEWzCPovToYlOxbNVUga7rJeAascl77W0hwPqTEn+MauscWDpi/EhawkoVZ6g8WB0/SCpfJiP/v8=
       - run: ssh debian@141.94.250.104
       - run: cd /home/debian/DesAnes4Green
       - run: git pull
