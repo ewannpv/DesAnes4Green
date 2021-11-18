@@ -22,10 +22,12 @@ const store: StoreOptions<VuexState> = {
     cartDrawer: null,
     cartlen: 0,
     dialogItem: null,
+    dialogcart: false,
     maxDisplayedItems: displayedItem,
   },
   getters: {
     DIALOG_ITEM: (state): unknown => state.dialogItem,
+    DIALOG_CART: (state): boolean => state.dialogcart,
     DISPLAYED_ITEMS: (state): Item[] => applyFilters(state),
     SELECTED_ITEMS: (state): Item[] => state.selectedItems,
     NECESSARY_ITEMS: (state): Item[] => state.necessaryItems,
@@ -37,6 +39,9 @@ const store: StoreOptions<VuexState> = {
   mutations: {
     SET_DIALOG_ITEM: (state, item) => {
       state.dialogItem = item;
+    },
+    SET_DIALOG_CART: (state, value) => {
+      state.dialogcart = value;
     },
     SET_ITEMS: (state, items) => {
       state.items = items;
@@ -104,6 +109,9 @@ const store: StoreOptions<VuexState> = {
     },
     UPDATE_DIALOG_ITEM: (context, item): void => {
       context.commit('SET_DIALOG_ITEM', item);
+    },
+    UPDATE_DIALOG_CART: (context, value): void => {
+      context.commit('SET_DIALOG_CART', value);
     },
     DISPLAY_MORE_ITEM: (context): void => {
       context.commit('SET_MORE_ITEM');

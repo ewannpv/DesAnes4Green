@@ -1,5 +1,6 @@
 <template>
   <v-container fluid pt-5 mt-2>
+    <dialog-cart />
     <h2 class="ml-3 pt-3">Panier {{ count }}</h2>
     <v-list>
       <v-list-group
@@ -32,7 +33,7 @@
       </v-list-group>
     </v-list>
     <v-row align="center" class="mt-3" justify="space-around">
-      <v-btn centered large dark color="success" @click="openCart()">
+      <v-btn centered large dark color="success" @click="displayCart()">
         Voir le panier
         <v-icon> mdi-cart-outline </v-icon>
       </v-btn>
@@ -44,8 +45,10 @@
 import Vue from 'vue';
 import store from '@/store';
 import { Item } from '@/interfaces/item';
+import DialogCart from './DialogCart.vue';
 
 export default Vue.extend({
+  components: { DialogCart },
   computed: {
     // List of selected items.
     items(): Item[] {
@@ -79,8 +82,9 @@ export default Vue.extend({
     removeItem(item: Item): void {
       store.dispatch('REMOVE_ITEM_TO_CART', item);
     },
-    openCart(): void {
-      // TODO.
+    displayCart(): void {
+      console.log('oof');
+      store.dispatch('UPDATE_DIALOG_CART', true);
     },
   },
 });

@@ -8,6 +8,7 @@ export interface VuexState {
   cartDrawer: unknown;
   cartlen: number;
   dialogItem: unknown;
+  dialogcart: boolean;
   maxDisplayedItems: number;
   familySearchFilter: string;
   tagSearchFilters: string[];
