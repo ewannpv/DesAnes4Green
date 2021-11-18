@@ -3,13 +3,17 @@
     <div>
       <v-card color="grey lighten-4">
         <v-card-title>
-          <span class="text-h4" color="primary" dark>Phases du projet</span>
+          <v-row class="pa-3">
+            <span class="text-h4" color="primary" dark>Phases du projet</span>
+            <v-spacer></v-spacer
+            ><v-btn text large color="green darken-2" @click="downloadCart()">Telecharger</v-btn>
+            <v-btn text large color="green darken-2" @click="closeDialog()">Fermer</v-btn></v-row
+          >
         </v-card-title>
         <v-col cols="12">
           <v-row>
             <v-col v-for="item in itemList" :key="item[0]" class="" cols="12" sm="12">
               <span class="text-h5 ml-3">{{ item[0] }}</span>
-
               <v-col v-for="child in item[1]" :key="child.ID" class="" cols="12" sm="12">
                 <v-card>
                   <v-col>
@@ -47,8 +51,8 @@
         </v-col>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn text color="green darken-2" @click="downloadCart()">Telecharger</v-btn>
-          <v-btn text color="green darken-2" @click="closeDialog()">Fermer</v-btn>
+          <v-btn text large color="green darken-2" @click="downloadCart()">Telecharger</v-btn>
+          <v-btn text large color="green darken-2" @click="closeDialog()">Fermer</v-btn>
         </v-card-actions>
       </v-card>
     </div>
