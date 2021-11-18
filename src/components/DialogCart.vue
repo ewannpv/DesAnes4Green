@@ -3,7 +3,13 @@
     <div>
       <v-card color="grey lighten-4">
         <v-card-title>
-          <span class="text-h4" color="primary" dark>Phases du projet</span>
+          <v-row class="mt-2 ml-3 mr-3">
+            <span class="text-h4" color="primary" dark>Phases du projet</span>
+            <v-spacer></v-spacer>
+            <v-btn text large color="light-blue darken-3" @click="downloadCart()"
+              >Telecharger</v-btn
+            >
+          </v-row>
         </v-card-title>
         <v-sheet class="ma-7 v-sheet--offset" elevation="4" color="green" max-width="calc(100%)">
           <v-sparkline
@@ -77,7 +83,6 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn text large color="green darken-2" @click="closeDialog()">Fermer</v-btn>
-
           <v-btn text large color="light-blue darken-3" @click="downloadCart()">Telecharger</v-btn>
         </v-card-actions>
       </v-card>
