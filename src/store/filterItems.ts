@@ -4,7 +4,11 @@ import { VuexState } from '@/interfaces/vuexState';
 const applyFilters = (state: VuexState): Item[] => {
   const items = state.items.filter((item) => {
     // Aplly identifiant filter.
-    if (state.identifiantFilter.length && !item.ID.includes(state.identifiantFilter)) {
+    if (
+      state.identifiantFilter.length
+      && !item.ID.toLowerCase().includes(state.identifiantFilter.toLowerCase())
+      && !item.Recommandation.toLowerCase().includes(state.identifiantFilter.toLowerCase())
+    ) {
       return false;
     }
 
