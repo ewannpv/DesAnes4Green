@@ -38,22 +38,46 @@
         <v-icon> mdi-plus </v-icon>
       </v-btn>
     </v-row>
+    <v-snackbar v-if="succed" v-model="snackbar" :timeout="timeout" dark color="green lighten-1">
+      <b>{{ text }}</b>
+    </v-snackbar>
+    <v-snackbar
+      v-else
+      v-model="snackbar"
+      :timeout="timeout"
+      dark
+      color="orange darken-2
+"
+    >
+      <b>{{ text }}</b>
+    </v-snackbar>
   </v-col>
 </template>
 
 <script lang="ts">
+import Vue from 'vue';
 import store from '@/store';
 import { getTags, Item } from '@/interfaces/item';
 import { Tag } from '@/interfaces/tag';
 import DialogItem from '@/components/DialogItem.vue';
 
-export default {
+export default Vue.extend({
   components: {
     DialogItem,
   },
-  data(): unknown {
+  data(): {
+    dialogShowed: boolean;
+    snackbar: boolean;
+    text: string;
+    succed: boolean;
+    timeout: number;
+    } {
     return {
       dialogShowed: false,
+      snackbar: false,
+      text: '',
+      succed: false,
+      timeout: 1500,
     };
   },
   mounted(): void {
@@ -73,7 +97,19 @@ export default {
       store.dispatch('UPDATE_DIALOG_ITEM', item);
     },
     addToCart(item: Item): void {
+      if (
+        store.getters.NECESSARY_ITEMS.includes(item)
+        || store.getters.SELECTED_ITEMS.includes(item)
+      ) {
+        this.text = 'Cet élément est déjà dans votre panier';
+        this.succed = false;
+        this.snackbar = true;
+        return;
+      }
       store.dispatch('ADD_ITEM_TO_CART', item);
+      this.text = "Cet élément vient d'être ajouté dans votre panier";
+      this.succed = true;
+      this.snackbar = true;
     },
     loadMoreItem(): void {
       store.dispatch('DISPLAY_MORE_ITEM');
@@ -82,5 +118,5 @@ export default {
       return `${item}_${tag}_${index}`;
     },
   },
-};
+});
 </script>
