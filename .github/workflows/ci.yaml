@@ -5,7 +5,8 @@ jobs:
   push:
     runs-on: ubuntu-latest
     steps:
-      - run: ssh debian@141.94.250.104 -p ${{secrets.VPS_PASSWORD}}
+      - run: echo ${{secrets.SSH_PRIVATE_KEY}} > ~/.ssh/id_rsa
+      - run: ssh debian@141.94.250.104
       - run: cd /home/debian/DesAnes4Green
       - run: git pull
       - run: yarn build
