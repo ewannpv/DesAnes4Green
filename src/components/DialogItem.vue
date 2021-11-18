@@ -37,7 +37,7 @@
         </v-chip>
       </v-card-text>
       <v-card-text>
-        <strong>Planette :</strong>
+        <strong>Planète :</strong>
         <v-chip
           :color="getPlanetForItem(dialogItem).color"
           text-color="white"
