@@ -1,27 +1,50 @@
 <template>
-  <v-dialog :value="dialogItem" @click:outside="closeDialog()" max-width="600px">
+  <v-dialog :value="dialogItem" @click:outside="closeDialog()" max-width="70%">
     <v-card v-if="dialogItem">
       <v-card-title>
         <span class="text-h5">{{ dialogItem.ID }} - {{ dialogItem.Recommandation }}</span>
       </v-card-title>
-    <v-card-text>
-      Criteres : {{dialogItem.Criteres}}
-    </v-card-text>
-    <v-card-text>
-      Difficulté : {{dialogItem.Difficulte}}
-    </v-card-text>
-    <v-card-text>
-      Prosperité : {{dialogItem.Difficulte}}
-    </v-card-text>
-    <v-card-text>Tests :
-      <li v-for="item in dialogItem.Tests" :key="item">{{item}}</li>
-    </v-card-text>
-    <v-card-text>
-    <v-card-text>{{dialogItem.Justifications}}</v-card-text>
-    <v-card-text>Acteurs :
-      <li v-for="item in dialogItem.Acteurs" :key="item">{{item}}</li>
-    </v-card-text>
-    </v-card-text>
+      <v-card-text>{{ dialogItem.Justifications }}</v-card-text>
+      <v-card-text> <strong>Criteres :</strong> {{ dialogItem.Criteres }} </v-card-text>
+      <v-card-text> <strong>Difficulté :</strong> {{ dialogItem.Difficulte }} </v-card-text>
+      <v-card-text>
+        <strong>Prosperité :</strong>
+        <v-chip
+          :color="getPropertyForItem(dialogItem).color"
+          text-color="white"
+          label
+          class="font-weight-bold ma-1"
+          >{{ dialogItem.Prosperity }}
+        </v-chip>
+      </v-card-text>
+      <v-card-text>
+        <strong>People :</strong>
+        <v-chip
+          :color="getPeopleForItem(dialogItem).color"
+          text-color="white"
+          label
+          class="font-weight-bold ma-1"
+          >{{ dialogItem.People }}
+        </v-chip>
+      </v-card-text>
+      <v-card-text>
+        <strong>Planette :</strong>
+        <v-chip
+          :color="getPlanetForItem(dialogItem).color"
+          text-color="white"
+          label
+          class="font-weight-bold ma-1"
+          >{{ dialogItem.Planet }}
+        </v-chip>
+      </v-card-text>
+      <v-card-text
+        ><strong>Tests :</strong>
+        <li class="ml-3" v-for="item in dialogItem.Tests" :key="item">{{ item }}</li>
+      </v-card-text>
+      <v-card-text
+        ><strong>Acteurs :</strong>
+        <li class="ml-3" v-for="item in dialogItem.Acteurs" :key="item">{{ item }}</li>
+      </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn text color="green darken-2" @click="closeDialog()">Fermer</v-btn>
@@ -33,7 +56,8 @@
 
 <script lang="ts">
 import store from '@/store';
-import { Item } from '@/interfaces/item';
+import { getRatedTag, Item } from '@/interfaces/item';
+import { Tag } from '@/interfaces/tag';
 
 export default {
   computed: {
@@ -48,6 +72,15 @@ export default {
     addToCart(): void {
       store.dispatch('ADD_ITEM_TO_CART', store.getters.DIALOG_ITEM);
       this.closeDialog();
+    },
+    getPropertyForItem(item: Item): Tag {
+      return getRatedTag('mdi-cards-heart', item.Prosperity);
+    },
+    getPeopleForItem(item: Item): Tag {
+      return getRatedTag('mdi-account-group', item.People);
+    },
+    getPlanetForItem(item: Item): Tag {
+      return getRatedTag('mdi-earth', item.Planet);
     },
   },
 };
