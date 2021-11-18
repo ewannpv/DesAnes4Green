@@ -7,19 +7,22 @@ import applyFilters from './filterItems';
 
 Vue.use(Vuex);
 
+const displayedItem = 20;
+
 const store: StoreOptions<VuexState> = {
   state: {
     items: [],
     familySearchFilter: '',
     tagSearchFilters: [],
     identifiantFilter: '',
+    difficultyFilter: 0,
     necessaryItems: [],
     selectedItems: [],
     searchDrawer: null,
     cartDrawer: null,
     cartlen: 0,
     dialogItem: null,
-    maxDisplayedItems: 20,
+    maxDisplayedItems: displayedItem,
   },
   getters: {
     DIALOG_ITEM: (state): unknown => state.dialogItem,
@@ -60,12 +63,19 @@ const store: StoreOptions<VuexState> = {
     },
     SET_FAMILY_FILTER: (state, filter) => {
       state.familySearchFilter = filter;
+      state.maxDisplayedItems = displayedItem;
     },
     SET_TAG_FILTERS: (state, filters) => {
       state.tagSearchFilters = filters;
+      state.maxDisplayedItems = displayedItem;
     },
     SET_ID_FILTER: (state, filter) => {
       state.identifiantFilter = filter;
+      state.maxDisplayedItems = displayedItem;
+    },
+    SET_DIFFICULTY_FILTER: (state, filter) => {
+      state.difficultyFilter = filter;
+      state.maxDisplayedItems = displayedItem;
     },
     DELETE_ITEM_TO_CART: (state, item) => {
       state.selectedItems = state.selectedItems.filter((element: Item) => element !== item);
@@ -98,9 +108,11 @@ const store: StoreOptions<VuexState> = {
     DISPLAY_MORE_ITEM: (context): void => {
       context.commit('SET_MORE_ITEM');
     },
-
     UPDATE_FAMILY_SEARCH_FILTER: (context, filter): void => {
       context.commit('SET_FAMILY_FILTER', filter);
+    },
+    UPDATE_DIFFICULTY_SEARCH_FILTER: (context, filter): void => {
+      context.commit('SET_DIFFICULTY_FILTER', filter);
     },
     UPDATE_TAG_SEARCH_FILTERS: (context, filters): void => {
       context.commit('SET_TAG_FILTERS', filters);

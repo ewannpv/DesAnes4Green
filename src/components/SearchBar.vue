@@ -27,6 +27,19 @@
         </v-chip-group>
       </v-col>
       <v-col cols="12">
+        <h3>Difficulté</h3>
+        <v-chip-group column label="Family" active-class="primary--text" v-model="difficultyFilter">
+          <v-chip
+            outlined
+            v-for="difficulty in difficulties"
+            :key="difficulty"
+            @input="updateDifficultyFilter(family)"
+          >
+            {{ difficulty }}
+          </v-chip>
+        </v-chip-group>
+      </v-col>
+      <v-col cols="12">
         <h3>Tag</h3>
         <v-chip-group
           column
@@ -55,15 +68,18 @@ export default Vue.extend({
     return {
       identifiantFilter: '',
       familyFilter: -1,
+      difficultyFilter: -1,
       tagFilters: [],
       families: api.getFamilyNames(),
       tags: api.getAllItemTags(),
+      difficulties: ['★', '★★', '★★★'],
     };
   },
   watch: {
     familyFilter: 'updateFamilyFilter',
     tagFilters: 'updateTagFilters',
     identifiantFilter: 'updateIdentifiantFilter',
+    difficultyFilter: 'updateDifficultyFilter',
   },
   computed: {},
   methods: {
@@ -80,6 +96,12 @@ export default Vue.extend({
     },
     updateIdentifiantFilter(): void {
       store.dispatch('UPDATE_ID_SEARCH_FILTER', this.identifiantFilter);
+    },
+    updateDifficultyFilter(): void {
+      store.dispatch(
+        'UPDATE_DIFFICULTY_SEARCH_FILTER',
+        this.difficultyFilter !== undefined ? this.difficulties[this.difficultyFilter].length : 0,
+      );
     },
   },
 });
