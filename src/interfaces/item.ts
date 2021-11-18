@@ -108,5 +108,12 @@ export const getTags = (item: Item): Tag[] => {
   list.push(getDifficultyTag(item.Difficulte));
   const itemTags = getItemTags(item.Tags);
   if (itemTags.length) list = list.concat(itemTags);
+  if (item.Incontournable) {
+    list.push({
+      name: 'INCONTOURNABLE',
+      icon: 'mdi-exclamation-thick',
+      color: 'pink lighten-2',
+    } as Tag);
+  }
   return list;
 };
