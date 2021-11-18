@@ -3,7 +3,7 @@
     <v-row>
       <v-col cols="12">
         <h3>Recherche</h3>
-        <v-form ref="form" class="mt-4">
+        <v-form ref="form" class="mt-4" @submit.prevent>
           <v-text-field
             append-icon="mdi-magnify"
             v-model="identifiantFilter"
