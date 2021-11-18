@@ -45,10 +45,11 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue';
 import store from '@/store';
 import { SearchBarData } from '@/interfaces/searchBarData';
 
-export default {
+export default Vue.extend({
   data(): SearchBarData {
     return {
       identifiantFilter: '',
@@ -80,5 +81,5 @@ export default {
       store.dispatch('UPDATE_ID_SEARCH_FILTER', this.identifiantFilter);
     },
   },
-};
+});
 </script>
