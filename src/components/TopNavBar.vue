@@ -8,7 +8,7 @@
   >
     <v-app-bar-nav-icon
       @click.stop="updateSearchDrawer"
-      aria-label="Open Side Pannel"
+      alabel="Open Side Pannel"
     ></v-app-bar-nav-icon>
     <v-toolbar-title>
       <h2>Equipe 54 - Design4Green</h2>
