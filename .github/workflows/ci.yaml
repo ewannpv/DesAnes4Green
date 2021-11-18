@@ -10,4 +10,4 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: 141.94.250.104 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7hLrS7zaaZFAJWfKPmeNDPmmHfOQqx28LDZlGheV2afTEncftFyKVd/FccutsOSSd8gt8Bb40zJjzhgiKw8z5qyjnlGE0OC/B3+7Rq5Tsg/Ao8AgDOPJ9dsmV0BluH+3bEnxTXBEDxKDfxOeGfl6HI4kD4sECw9BPe5mgOvWcMbiTuJwa0muAf0b5D3UsbpvRtCI7lp83lZuOJfU717hPmH/71Igo4frXb3iWnj0+GiJXvx4wcu6g1GACPsDbSmPHpJeTXrdoNSIi4HTZatg/nEzTwu7mx0kC2h39lZqko2FP8bsJP2aqDSnRXn0dmwmWccjU57GDo/d3CoG8NYY0WieZqyLjC2mjq5TmkPMJHFzCSoGQObiN9qyIGNmtm/n81qMHmLpxuL9eTKJfeMgEFEIZnb28kwjNf3W5VHrchQXKFumAKPrHEWzCPovToYlOxbNVUga7rJeAascl77W0hwPqTEn+MauscWDpi/EhawkoVZ6g8WB0/SCpfJiP/v8=
-      - run: ssh debian@141.94.250.104 cd /home/debian/DesAnes4Green && git pull && yarn build && sudo mv ./dist/* /var/www/html
+      - run: ssh debian@141.94.250.104 'cd /home/debian/DesAnes4Green && git pull && yarn build && sudo mv ./dist/* /var/www/html'
