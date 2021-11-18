@@ -5,30 +5,38 @@
         <span class="text-h3">Panier</span>
       </v-card-title>
       <v-col cols="12">
-        <span class="text-h4 mt-3">Etapes</span>
+        <span class="text-h4">Etapes</span>
         <v-row>
-          <dialog-item />
-          <v-col v-for="item in itemList" :key="item[0]" class="mb-2 mt-2" cols="12" sm="12">
-            <v-card color="green lighten-4">
+          <v-col v-for="item in itemList" :key="item[0]" class="" cols="12" sm="12">
+            <v-card color="green lighten-4 mt-3">
               <v-card-title primary-title> {{ item[0] }} </v-card-title>
-              <v-col v-for="child in item[1]" :key="child.ID" class="mb-2 mt-2" cols="12" sm="12">
+              <v-col v-for="child in item[1]" :key="child.ID" class="" cols="12" sm="12">
                 <v-card>
-                  <v-col class="ma-3">
-                    <v-row>ID: {{ child.ID }}</v-row>
-                    <v-row>Critère: {{ child.Criteres }}</v-row>
-                    <v-row>Tests:</v-row>
-                    <v-row
+                  <v-col>
+                    <v-row class="ma-2 pb-2">
+                      <v-chip text-color="white" label color="primary"> {{ child.ID }}</v-chip>
+                    </v-row>
+                    <v-row class="ma-2"><b>Critère:</b>&ensp;{{ child.Criteres }}</v-row>
+                    <v-row class="ma-2"><b>Tests:</b></v-row>
+                    <v-row class="ma-2"
                       ><ul>
-                        <li v-for="(test, index) in child.Tests" :key="index">
+                        <li class="ma-2" v-for="(test, index) in child.Tests" :key="index">
                           {{ test }}
                         </li>
                       </ul></v-row
                     >
-                    <v-row>Indicateurs: {{ child.Indicateurs ? child.Indicateurs : 'N/A' }}</v-row>
-                    <v-row
+                    <v-row class="ma-2"
+                      ><b>Indicateurs:</b>&ensp;
+                      {{ child.Indicateurs ? child.Indicateurs : 'N/A' }}</v-row
+                    >
+                    <v-row class="ma-2"
                       ><ul>
-                        <li>X: {{ child.Xindicateur ? child.Xindicateur : 'N/A' }}</li>
-                        <li>Y: {{ child.Xindicateur ? child.Yindicateur : 'N/A' }}</li>
+                        <li class="ma-2">
+                          <b>X:</b>&ensp;{{ child.Xindicateur ? child.Xindicateur : 'N/A' }}
+                        </li>
+                        <li class="ma-2">
+                          <b>Y:</b>&ensp;{{ child.Xindicateur ? child.Yindicateur : 'N/A' }}
+                        </li>
                       </ul></v-row
                     >
                   </v-col>
@@ -36,12 +44,6 @@
               </v-col>
             </v-card>
           </v-col>
-        </v-row>
-        <v-row align="center" justify="space-around" v-if="items.length">
-          <v-btn centered x-large class="mb-3" rounded dark color="success" @click="loadMoreItem()">
-            Afficher
-            <v-icon> mdi-plus </v-icon>
-          </v-btn>
         </v-row>
       </v-col>
       <v-card-actions>
