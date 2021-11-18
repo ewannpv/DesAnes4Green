@@ -18,7 +18,7 @@
             padding="8"
             auto-draw
             stroke-linecap="round"
-            height="70"
+            height="50"
           ></v-sparkline>
         </v-sheet>
         <v-card-text>
