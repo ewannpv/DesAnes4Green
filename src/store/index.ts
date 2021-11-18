@@ -7,6 +7,8 @@ import applyFilters from './filterItems';
 
 Vue.use(Vuex);
 
+const displayedItem = 20;
+
 const store: StoreOptions<VuexState> = {
   state: {
     items: [],
@@ -19,7 +21,7 @@ const store: StoreOptions<VuexState> = {
     cartDrawer: null,
     cartlen: 0,
     dialogItem: null,
-    maxDisplayedItems: 20,
+    maxDisplayedItems: displayedItem,
   },
   getters: {
     DIALOG_ITEM: (state): unknown => state.dialogItem,
@@ -60,12 +62,15 @@ const store: StoreOptions<VuexState> = {
     },
     SET_FAMILY_FILTER: (state, filter) => {
       state.familySearchFilter = filter;
+      state.maxDisplayedItems = displayedItem;
     },
     SET_TAG_FILTERS: (state, filters) => {
       state.tagSearchFilters = filters;
+      state.maxDisplayedItems = displayedItem;
     },
     SET_ID_FILTER: (state, filter) => {
       state.identifiantFilter = filter;
+      state.maxDisplayedItems = displayedItem;
     },
     DELETE_ITEM_TO_CART: (state, item) => {
       state.selectedItems = state.selectedItems.filter((element: Item) => element !== item);

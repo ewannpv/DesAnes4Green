@@ -31,6 +31,12 @@
         </v-list-item>
       </v-list-group>
     </v-list>
+    <v-row align="center" class="mt-3" justify="space-around">
+      <v-btn centered large dark color="success" @click="openCart()">
+        Voir le panier
+        <v-icon> mdi-cart-outline </v-icon>
+      </v-btn>
+    </v-row>
   </v-container>
 </template>
 
@@ -72,6 +78,9 @@ export default Vue.extend({
     },
     removeItem(item: Item): void {
       store.dispatch('REMOVE_ITEM_TO_CART', item);
+    },
+    openCart(): void {
+      // TODO.
     },
   },
 });
