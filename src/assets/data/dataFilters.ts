@@ -1,0 +1,30 @@
+export const ItemTags = [
+  '#GOV',
+  '#HR',
+  '#FIN',
+  '#METH',
+  '#LEG',
+  '#COM',
+  '#VALUE',
+  '#VOL',
+  '#USE',
+  '#OBSO',
+  '#MAINT',
+  '#DEBT',
+  '#BUY',
+  '#PERF',
+  '#SEC',
+];
+
+export const Actors = [
+  'ProjectMngr',
+  'Manager',
+  'HR',
+  'ITMngr',
+  'Staff',
+  'RSE/NR',
+  'ProductOwner',
+  'Dev',
+  'Designer',
+  'ProductMngr',
+];

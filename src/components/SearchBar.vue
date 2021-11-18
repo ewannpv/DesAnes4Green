@@ -48,6 +48,7 @@
 import Vue from 'vue';
 import store from '@/store';
 import { SearchBarData } from '@/interfaces/searchBarData';
+import * as api from '../api';
 
 export default Vue.extend({
   data(): SearchBarData {
@@ -56,7 +57,7 @@ export default Vue.extend({
       familyFilter: -1,
       tagFilters: [],
       families: ['STRATEGIE', 'FRONTEND', 'BACKEND'],
-      tags: ['#USE', '#VALUE', '#METH'],
+      tags: api.getAllItemTags(),
     };
   },
   watch: {
