@@ -17,7 +17,7 @@
 
     <v-btn icon class="mr-1" @click.stop="updateCartDrawer">
       <v-badge color="green darken-4" :content="cartLen">
-        <v-icon>mdi-cart-outline</v-icon>
+        <v-icon> mdi-cart-outline </v-icon>
       </v-badge>
     </v-btn>
   </v-app-bar>
