@@ -6,7 +6,10 @@
     clipped-left
     :src="require('@/assets/images/banner-1050629_1920.jpg')"
   >
-    <v-app-bar-nav-icon @click.stop="updateSearchDrawer"></v-app-bar-nav-icon>
+    <v-app-bar-nav-icon
+      @click.stop="updateSearchDrawer"
+      aria-label="Open Side Pannel"
+    ></v-app-bar-nav-icon>
     <v-toolbar-title>
       <h2>Equipe 54 - Design4Green</h2>
     </v-toolbar-title>
