@@ -8,8 +8,13 @@ const applyFilters = (state: VuexState): Item[] => {
       return false;
     }
 
+    // Apply family filter.
     if (state.familySearchFilter.length && state.familySearchFilter !== item.Famille) {
-      // Apply family filter.
+      return false;
+    }
+
+    // Apply difficulty filter.
+    if (state.difficultyFilter && state.difficultyFilter !== item.Difficulte.length) {
       return false;
     }
 

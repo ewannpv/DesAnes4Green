@@ -12,4 +12,5 @@ export interface VuexState {
   familySearchFilter: string;
   tagSearchFilters: string[];
   identifiantFilter: string;
+  difficultyFilter: number;
 }
