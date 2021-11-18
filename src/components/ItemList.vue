@@ -101,13 +101,13 @@ export default Vue.extend({
         store.getters.NECESSARY_ITEMS.includes(item)
         || store.getters.SELECTED_ITEMS.includes(item)
       ) {
-        this.text = 'Cet élément est déjà dans votre panier';
+        this.text = 'Cet élément est déjà dans votre panier !';
         this.succed = false;
         this.snackbar = true;
         return;
       }
       store.dispatch('ADD_ITEM_TO_CART', item);
-      this.text = "Cet élément vient d'être ajouté dans votre panier";
+      this.text = "Cet élément vient d'être ajouté dans votre panier !";
       this.succed = true;
       this.snackbar = true;
     },
