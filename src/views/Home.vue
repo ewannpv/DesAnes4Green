@@ -7,7 +7,13 @@
       <cart-bar />
     </v-navigation-drawer>
     <top-nav-bar />
-    <v-container align-start fill-height fluid grid-list-xs class="grey lighten-4 main_container">
+    <v-container
+      align-start
+      fill-height
+      justify="space-around"
+      grid-list-xs
+      class="grey lighten-4 main_container"
+    >
       <item-list />
     </v-container>
 

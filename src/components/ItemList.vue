@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-col cols="12">
     <v-row>
       <dialog-item />
       <v-col v-for="item in items" :key="item.name" class="mb-2 mt-2" cols="12" sm="6">
@@ -34,13 +34,13 @@
         </v-card>
       </v-col>
     </v-row>
-    <v-row align="center" justify="space-around">
+    <v-row align="center" justify="space-around" v-if="items.length">
       <v-btn centered x-large class="mb-3" rounded dark color="success" @click="loadMoreItem()">
         Afficher
         <v-icon> mdi-plus </v-icon>
       </v-btn>
     </v-row>
-  </div>
+  </v-col>
 </template>
 
 <script lang="ts">
