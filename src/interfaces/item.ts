@@ -46,20 +46,16 @@ export const getFamilyTag = (name: string): Tag => {
 export const getDifficultyTag = (name: string): Tag => {
   let stars = 'Difficulté: ';
   let color: string;
-  switch (name.length) {
-    case 1:
+  switch (name) {
+    case '*':
       color = ColorEnum.A;
       stars += '★';
-
       break;
-
-    case 2:
+    case '**':
       color = ColorEnum.B;
       stars += '★★';
-
       break;
-
-    case 3:
+    case '***':
       color = ColorEnum.C;
       stars += '★★★';
       break;

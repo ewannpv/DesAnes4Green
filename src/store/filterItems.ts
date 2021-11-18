@@ -18,7 +18,10 @@ const applyFilters = (state: VuexState): Item[] => {
     }
 
     // Apply difficulty filter.
-    if (state.difficultyFilter && state.difficultyFilter !== item.Difficulte.length) {
+    if (
+      state.difficultyFilter
+      && (item.Difficulte === 'N/A' || state.difficultyFilter !== item.Difficulte.length)
+    ) {
       return false;
     }
 
