@@ -10,19 +10,17 @@
           </v-card-subtitle>
           <v-card-text>
             <v-divider></v-divider>
-            <v-chip-group active-class="primary--text" column>
-              <v-chip
-                v-for="(tag, index) in getTags(item)"
-                :key="tagKey(item.ID, tag.name, index)"
-                v-bind:color="tag.color"
-                text-color="white"
-                label
-                class="font-weight-bold"
-              >
-                <v-icon left v-if="tag.icon"> {{ tag.icon }} </v-icon>
-                {{ tag.name }}
-              </v-chip>
-            </v-chip-group>
+            <v-chip
+              v-for="(tag, index) in getTags(item)"
+              :key="tagKey(item.ID, tag.name, index)"
+              :color="tag.color"
+              text-color="white"
+              label
+              class="font-weight-bold ma-1"
+            >
+              <v-icon left v-if="tag.icon"> {{ tag.icon }} </v-icon>
+              {{ tag.name }}
+            </v-chip>
           </v-card-text>
           <v-card-actions>
             <v-btn text color="green darken-2" @click="displayItem(item)">Details</v-btn>

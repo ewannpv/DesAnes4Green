@@ -29,13 +29,12 @@ export default {
     items(): Item[] {
       return store.getters.SELECTED_ITEMS;
     },
-    cartLen(): string {
-      return this.items.length.toString();
+    cartLen(): number {
+      return store.getters.CART_LEN;
     },
   },
   methods: {
     updateSearchDrawer(): void {
-      console.log('oof');
       store.dispatch('UPDATE_SEARCH_DRAWER', !store.getters.SEARCH_DRAWER);
     },
     updateCartDrawer(): void {

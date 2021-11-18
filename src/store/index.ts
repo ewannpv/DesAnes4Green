@@ -25,7 +25,8 @@ const store: StoreOptions<VuexState> = {
     DIALOG_ITEM: (state): unknown => state.dialogItem,
     DISPLAYED_ITEMS: (state): Item[] => applyFilters(state),
     SELECTED_ITEMS: (state): Item[] => state.selectedItems,
-    CART_LEN: (state): number => state.selectedItems.length,
+    NECESSARY_ITEMS: (state): Item[] => state.necessaryItems,
+    CART_LEN: (state): number => state.selectedItems.length + state.necessaryItems.length,
     ITEMS: (state): Item[] => state.items,
     SEARCH_DRAWER: (state): unknown => state.searchDrawer,
     CART_DRAWER: (state): unknown => state.cartDrawer,
@@ -70,8 +71,7 @@ const store: StoreOptions<VuexState> = {
   actions: {
     FETCH_ITEMS: (context): void => {
       const items = api.getAllItems();
-      const necessaryItems = items.map((item: Item) => item.Incontournable === true);
-
+      const necessaryItems = items.filter((item: Item) => item.Incontournable);
       context.commit('SET_ITEMS', items);
       context.commit('SET_NECESSARY_ITEMS', necessaryItems);
     },
