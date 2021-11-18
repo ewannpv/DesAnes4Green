@@ -11,6 +11,15 @@ const ColorEnum = Object.freeze({
   NONE: 'blue-grey lighten-5',
 });
 
+export const getFamilyTag = (name: string): Tag => {
+  const tag = {
+    name: name.length ? name : 'N/A',
+    icon: 'mdi-home-group  ',
+    color: name.length ? 'light-blue darken-3' : ColorEnum.NONE,
+  } as Tag;
+  return tag;
+};
+
 export const getRatedTag = (icon: string, rate: string): Tag => {
   let color: string;
   let name: string = rate;

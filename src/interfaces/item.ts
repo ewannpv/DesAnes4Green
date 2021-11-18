@@ -1,4 +1,4 @@
-import { getRatedTag, Tag } from './tag';
+import { getFamilyTag, getRatedTag, Tag } from './tag';
 
 export interface Item {
   Famille: string;
@@ -24,6 +24,7 @@ export interface Item {
 export const getTags = (item: Item): Tag[] => {
   const list: Tag[] = [];
 
+  list.push(getFamilyTag(item.Famille));
   list.push(getRatedTag('mdi-earth', item.Planet));
   list.push(getRatedTag('mdi-account-group', item.People));
   list.push(getRatedTag('mdi-cards-heart', item.Prosperity));
