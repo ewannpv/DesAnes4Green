@@ -6,7 +6,16 @@
       </v-card-title>
       <v-card-text>{{ dialogItem.Justifications }}</v-card-text>
       <v-card-text> <strong>Criteres :</strong> {{ dialogItem.Criteres }} </v-card-text>
-      <v-card-text> <strong>Difficulté :</strong> {{ dialogItem.Difficulte }} </v-card-text>
+      <v-card-text>
+        <strong>Difficulté :</strong>
+        <v-chip
+          :color="getDifficulteForItem(dialogItem).color"
+          text-color="white"
+          label
+          class="font-weight-bold ma-1"
+          >{{ dialogItem.Difficulte }}
+        </v-chip>
+      </v-card-text>
       <v-card-text>
         <strong>Prosperité :</strong>
         <v-chip
@@ -41,7 +50,7 @@
         ><strong>Tests :</strong>
         <li class="ml-3" v-for="item in dialogItem.Tests" :key="item">{{ item }}</li>
       </v-card-text>
-      <v-card-text
+      <v-card-text v-if="dialogItem.Acteurs.length"
         ><strong>Acteurs :</strong>
         <li class="ml-3" v-for="item in dialogItem.Acteurs" :key="item">{{ item }}</li>
       </v-card-text>
@@ -56,7 +65,7 @@
 
 <script lang="ts">
 import store from '@/store';
-import { getRatedTag, Item } from '@/interfaces/item';
+import { getDifficultyTag, getRatedTag, Item } from '@/interfaces/item';
 import { Tag } from '@/interfaces/tag';
 
 export default {
@@ -82,6 +91,9 @@ export default {
     },
     getPlanetForItem(item: Item): Tag {
       return getRatedTag('mdi-earth', item.Planet);
+    },
+    getDifficulteForItem(item: Item): Tag {
+      return getDifficultyTag(item.Difficulte);
     },
   },
 };
