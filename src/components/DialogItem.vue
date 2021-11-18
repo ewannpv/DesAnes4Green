@@ -4,7 +4,24 @@
       <v-card-title>
         <span class="text-h5">{{ dialogItem.ID }} - {{ dialogItem.Recommandation }}</span>
       </v-card-title>
-      <v-card-text> </v-card-text>
+    <v-card-text>
+      Criteres : {{dialogItem.Criteres}}
+    </v-card-text>
+    <v-card-text>
+      Difficulté : {{dialogItem.Difficulte}}
+    </v-card-text>
+    <v-card-text>
+      Prosperité : {{dialogItem.Difficulte}}
+    </v-card-text>
+    <v-card-text>Tests :
+      <li v-for="item in dialogItem.Tests" :key="item">{{item}}</li>
+    </v-card-text>
+    <v-card-text>
+    <v-card-text>{{dialogItem.Justifications}}</v-card-text>
+    <v-card-text>Acteurs :
+      <li v-for="item in dialogItem.Acteurs" :key="item">{{item}}</li>
+    </v-card-text>
+    </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn text color="green darken-2" @click="closeDialog()">Fermer</v-btn>
