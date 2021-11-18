@@ -62,7 +62,7 @@ const store: StoreOptions<VuexState> = {
       state.maxDisplayedItems += 20;
     },
     SET_ITEM_TO_CART: (state, item) => {
-      if (!state.selectedItems.includes(item)) {
+      if (!item.Incontournable && !state.selectedItems.includes(item)) {
         state.selectedItems.push(item);
       }
     },
