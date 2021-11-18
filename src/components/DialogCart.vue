@@ -2,7 +2,7 @@
   <v-dialog :value="dialogCart" @click:outside="closeDialog()" max-width="70%">
     <v-card>
       <v-card-title>
-        <span class="text-h4">Panier</span>
+        <span class="text-h4">Phases du projet</span>
       </v-card-title>
       <v-col cols="12">
         <v-row>
