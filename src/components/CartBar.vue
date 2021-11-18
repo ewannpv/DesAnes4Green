@@ -18,6 +18,16 @@
           <v-list-item-content>
             <v-list-item-title v-text="child.ID"></v-list-item-title>
           </v-list-item-content>
+          <v-list-item-action>
+            <v-row>
+              <v-btn icon @click="displayItem(child)">
+                <v-icon color="grey lighten-1">mdi-information</v-icon>
+              </v-btn>
+              <v-btn v-if="listItem.title == 'Autres'" icon @click="removeItem(child)">
+                <v-icon color="grey lighten-1">mdi-delete-empty</v-icon>
+              </v-btn>
+            </v-row>
+          </v-list-item-action>
         </v-list-item>
       </v-list-group>
     </v-list>
@@ -54,6 +64,14 @@ export default Vue.extend({
           subtitle: `Elements: ${store.getters.SELECTED_ITEMS.length}`,
         },
       ];
+    },
+  },
+  methods: {
+    displayItem(item: Item): void {
+      store.dispatch('UPDATE_DIALOG_ITEM', item);
+    },
+    removeItem(item: Item): void {
+      store.dispatch('REMOVE_ITEM_TO_CART', item);
     },
   },
 });

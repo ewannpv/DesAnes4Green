@@ -67,16 +67,24 @@ const store: StoreOptions<VuexState> = {
     SET_ID_FILTER: (state, filter) => {
       state.identifiantFilter = filter;
     },
+    DELETE_ITEM_TO_CART: (state, item) => {
+      state.selectedItems = state.selectedItems.filter((element: Item) => element !== item);
+    },
   },
   actions: {
     FETCH_ITEMS: (context): void => {
       const items = api.getAllItems();
-      const necessaryItems = items.filter((item: Item) => item.Incontournable);
+      const necessaryItems = items.filter(
+        (item: Item) => item.Incontournable && item.Famille !== 'HEBERGEMENT',
+      );
       context.commit('SET_ITEMS', items);
       context.commit('SET_NECESSARY_ITEMS', necessaryItems);
     },
     ADD_ITEM_TO_CART: (context, item): void => {
       context.commit('SET_ITEM_TO_CART', item);
+    },
+    REMOVE_ITEM_TO_CART: (context, item): void => {
+      context.commit('DELETE_ITEM_TO_CART', item);
     },
     UPDATE_SEARCH_DRAWER: (context, value): void => {
       context.commit('SET_SEARCH_DRAWER', value);
