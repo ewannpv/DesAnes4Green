@@ -5,9 +5,9 @@ const applyFilters = (state: VuexState): Item[] => {
   const items = state.items.filter((item) => {
     // Aplly identifiant filter.
     if (
-      state.identifiantFilter.length &&
-      !item.ID.includes(state.identifiantFilter) &&
-      !item.Recommandation.includes(state.identifiantFilter)
+      state.identifiantFilter.length
+      && !item.ID.includes(state.identifiantFilter)
+      && !item.Recommandation.includes(state.identifiantFilter)
     ) {
       return false;
     }
