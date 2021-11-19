@@ -13,9 +13,7 @@
         </v-card-title>
         <v-sheet class="ma-7 v-sheet--offset" elevation="4" color="green" max-width="calc(100%)">
           <v-sparkline
-            auto-line-width="true"
             class="pa-2"
-            show-labels="true"
             label-size="5"
             :labels="labels"
             :value="value"
@@ -29,7 +27,6 @@
         </v-sheet>
         <v-card-text>
           <v-col cols="12">
-            <span class="text-h6 mb-3 mt-0" color="primary" dark>Etapes</span>
             <v-list class="full-width">
               <v-list-group
                 v-for="item in itemList"

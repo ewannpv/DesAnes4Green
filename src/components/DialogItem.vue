@@ -71,7 +71,6 @@ import { Tag } from '@/interfaces/tag';
 export default {
   computed: {
     dialogItem(): Item {
-      console.log(store.getters.DIALOG_ITEM);
       return store.getters.DIALOG_ITEM;
     },
   },

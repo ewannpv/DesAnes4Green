@@ -21,7 +21,3 @@ export function getAllStages(): string[] {
 export function getFamilyNames(): string[] {
   return FamilyHisto.map((item: (string | number)[]) => item[0] as string);
 }
-
-export function todo(): void {
-  console.log('todo');
-}
