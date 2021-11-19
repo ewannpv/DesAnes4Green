@@ -33,7 +33,7 @@
       </v-list-group>
     </v-list>
     <v-row align="center" class="mt-3" justify="space-around">
-      <v-btn centered large dark color="success" @click="displayCart()">
+      <v-btn centered large dark color="success" @click.stop="displayCart()">
         Voir le panier
         <v-icon> mdi-cart-outline </v-icon>
       </v-btn>
@@ -83,7 +83,7 @@ export default Vue.extend({
       store.dispatch('REMOVE_ITEM_TO_CART', item);
     },
     displayCart(): void {
-      store.dispatch('UPDATE_DIALOG_CART', false);
+      console.log('oof');
       store.dispatch('UPDATE_DIALOG_CART', true);
     },
   },
