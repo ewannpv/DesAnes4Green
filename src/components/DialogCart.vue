@@ -11,72 +11,76 @@
             >
           </v-row>
         </v-card-title>
-        <v-sheet class="ma-7 v-sheet--offset" elevation="4" color="green" max-width="calc(100%)">
-          <v-sparkline
-            class="pa-2"
-            label-size="5"
-            :labels="labels"
-            :value="value"
-            color="white"
-            line-width="2"
-            padding="8"
-            auto-draw
-            stroke-linecap="round"
-            height="50"
-          ></v-sparkline>
-        </v-sheet>
-        <v-card-text>
-          <v-col cols="12">
-            <v-list class="full-width">
-              <v-list-group
-                v-for="item in itemList"
-                :key="item[0]"
-                v-model="itemList.active"
-                no-action
-              >
-                <template v-slot:activator>
-                  <v-list-item-content>
-                    <v-list-item-title> {{ item[0] }} ({{ item[1].length }})</v-list-item-title>
-                  </v-list-item-content>
-                </template>
-                <v-list-item v-for="child in item[1]" :key="child.ID">
-                  <v-list-item-content>
-                    <v-card>
-                      <v-col>
-                        <v-row class="ma-2 pb-2">
-                          <v-chip text-color="white" label color="primary"> {{ child.ID }}</v-chip>
-                        </v-row>
-                        <v-row class="ma-2"><b>Critère:</b>&ensp;{{ child.Criteres }}</v-row>
-                        <v-row class="ma-2"><b>Tests:</b></v-row>
-                        <v-row class="ma-2"
-                          ><ul>
-                            <li class="ma-2" v-for="(test, index) in child.Tests" :key="index">
-                              {{ test }}
-                            </li>
-                          </ul></v-row
-                        >
-                        <v-row class="ma-2"
-                          ><b>Indicateurs:</b>&ensp;
-                          {{ child.Indicateurs ? child.Indicateurs : 'N/A' }}</v-row
-                        >
-                        <v-row class="ma-2"
-                          ><ul>
-                            <li class="ma-2">
-                              <b>X:</b>&ensp;{{ child.Xindicateur ? child.Xindicateur : 'N/A' }}
-                            </li>
-                            <li class="ma-2">
-                              <b>Y:</b>&ensp;{{ child.Xindicateur ? child.Yindicateur : 'N/A' }}
-                            </li>
-                          </ul></v-row
-                        >
-                      </v-col>
-                    </v-card>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list-group>
-            </v-list>
-          </v-col>
-        </v-card-text>
+        <v-col cols="12">
+          <v-sheet class="ma-7 v-sheet--offset" elevation="4" color="green" max-width="calc(100%)">
+            <v-sparkline
+              class="pa-2"
+              label-size="5"
+              :labels="labels"
+              :value="value"
+              color="white"
+              line-width="2"
+              padding="8"
+              auto-draw
+              stroke-linecap="round"
+              height="50"
+            ></v-sparkline>
+          </v-sheet>
+          <v-card-text>
+            <v-col cols="12">
+              <v-list class="full-width">
+                <v-list-group
+                  v-for="item in itemList"
+                  :key="item[0]"
+                  v-model="itemList.active"
+                  no-action
+                >
+                  <template v-slot:activator>
+                    <v-list-item-content>
+                      <v-list-item-title> {{ item[0] }} ({{ item[1].length }})</v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+                  <v-list-item v-for="child in item[1]" :key="child.ID">
+                    <v-list-item-content>
+                      <v-card>
+                        <v-col>
+                          <v-row class="ma-2 pb-2">
+                            <v-chip text-color="white" label color="primary">
+                              {{ child.ID }}</v-chip
+                            >
+                          </v-row>
+                          <v-row class="ma-2"><b>Critère:</b>&ensp;{{ child.Criteres }}</v-row>
+                          <v-row class="ma-2"><b>Tests:</b></v-row>
+                          <v-row class="ma-2"
+                            ><ul>
+                              <li class="ma-2" v-for="(test, index) in child.Tests" :key="index">
+                                {{ test }}
+                              </li>
+                            </ul></v-row
+                          >
+                          <v-row class="ma-2"
+                            ><b>Indicateurs:</b>&ensp;
+                            {{ child.Indicateurs ? child.Indicateurs : 'N/A' }}</v-row
+                          >
+                          <v-row class="ma-2"
+                            ><ul>
+                              <li class="ma-2">
+                                <b>X:</b>&ensp;{{ child.Xindicateur ? child.Xindicateur : 'N/A' }}
+                              </li>
+                              <li class="ma-2">
+                                <b>Y:</b>&ensp;{{ child.Xindicateur ? child.Yindicateur : 'N/A' }}
+                              </li>
+                            </ul></v-row
+                          >
+                        </v-col>
+                      </v-card>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list-group>
+              </v-list>
+            </v-col>
+          </v-card-text>
+        </v-col>
 
         <v-card-actions>
           <v-spacer></v-spacer>
