@@ -58,7 +58,6 @@ const store: StoreOptions<VuexState> = {
     },
     SET_CART_DRAWER: (state, value) => {
       state.cartDrawer = value;
-      state.searchDrawer = value;
     },
     SET_MORE_ITEM: (state) => {
       state.maxDisplayedItems += 20;
