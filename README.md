@@ -1,4 +1,4 @@
-# atlats-frontend
+# Design4Green
 
 ## Project setup
 ```
