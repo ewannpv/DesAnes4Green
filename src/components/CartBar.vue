@@ -83,6 +83,7 @@ export default Vue.extend({
       store.dispatch('REMOVE_ITEM_TO_CART', item);
     },
     displayCart(): void {
+      store.dispatch('UPDATE_DIALOG_CART', false);
       store.dispatch('UPDATE_DIALOG_CART', true);
     },
   },

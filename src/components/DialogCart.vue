@@ -1,7 +1,7 @@
 <template>
   <v-dialog :value="dialogCart" @click:outside="closeDialog()" max-width="70%">
     <div>
-      <v-card color="grey lighten-4">
+      <v-card color="grey lighten-4" class="full-width">
         <v-card-title>
           <v-row class="mt-2 ml-3 mr-3">
             <span class="text-h4" color="primary" dark>Phases du projet</span>
@@ -29,6 +29,7 @@
         </v-sheet>
         <v-card-text>
           <v-col cols="12">
+            <span class="text-h6 mb-3 mt-0" color="primary" dark>Etapes</span>
             <v-list class="full-width">
               <v-list-group
                 v-for="item in itemList"
